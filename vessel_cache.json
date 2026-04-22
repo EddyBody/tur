@@ -1,0 +1,47 @@
+{
+  "259000790": {
+    "found": true,
+    "mmsi": "259000790",
+    "name": "ODDRUN WITH",
+    "lat": 68.70119,
+    "lon": 15.41957,
+    "sog": 0,
+    "cog": 74.1,
+    "heading": 349,
+    "nav_stat": "Underveis (maskin)",
+    "time_utc": "2026-04-22 07:39:34.350428875 +0000 UTC",
+    "destination": "",
+    "msg_type": "PositionReport",
+    "from_cache": true
+  },
+  "259120000": {
+    "found": true,
+    "mmsi": "259120000",
+    "name": "WITH JUNIOR",
+    "lat": 63.43233,
+    "lon": 10.3705,
+    "sog": 0,
+    "cog": 197,
+    "heading": 279,
+    "nav_stat": "Underveis (maskin)",
+    "time_utc": "2026-04-22 07:52:31.527516484 +0000 UTC",
+    "destination": "",
+    "msg_type": "PositionReport",
+    "from_cache": false
+  },
+  "257038590": {
+    "found": true,
+    "mmsi": "257038590",
+    "name": "WITH FROHAVET",
+    "lat": 65.98517,
+    "lon": 12.43605,
+    "sog": 13.5,
+    "cog": 224.9,
+    "heading": 227,
+    "nav_stat": "Underveis (maskin)",
+    "time_utc": "2026-04-22 07:28:07.7599934 +0000 UTC",
+    "destination": "",
+    "msg_type": "PositionReport",
+    "from_cache": true
+  }
+}

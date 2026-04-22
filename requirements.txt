@@ -1,0 +1,6 @@
+requests
+folium
+streamlit
+streamlit-folium
+websockets
+python-dotenv
