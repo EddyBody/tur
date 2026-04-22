@@ -506,18 +506,23 @@ def build_map(
 # ── Streamlit UI ──────────────────────────────────────────────────────────────
 
 st.set_page_config(page_title="Wind & Vessel Tracker", page_icon="🚢", layout="wide")
-st.title("🚢 Tur - Ikke helt som Yr, men nesten..")
+st.title("🚢 Vind, Vær & Skipstracker")
 
 # API key is loaded inside the sidebar block below
 
 # ── Last inn API-nøkkel (kjøres alltid, ikke bare i sidebar) ──────────────────
-# Prøv Streamlit secrets først (Community Cloud), så .env (lokalt)
+from pathlib import Path as _Path
+
+# Last inn API-nøkkel:
+# 1. Prøv Streamlit secrets først (fungerer på Community Cloud)
+# 2. Fall tilbake til .env-fil (fungerer lokalt)
+api_key = ""
 try:
     api_key = st.secrets["AISSTREAM_API_KEY"]
-except:
-    # faller tilbake til .env-lesing som før
-    from pathlib import Path as _Path
-    api_key = ""
+except Exception:
+    pass
+
+if not api_key:
     for _name in (".env", "key.env"):
         _p = _Path.cwd() / _name
         if _p.exists():
@@ -624,10 +629,12 @@ _stype, _smsg = _status_text(vessel_data["vessels"])
 _status_placeholder.info(_smsg)
 
 with _col_btn:
-    if api_key:
-        if st.button("🔄 Oppdater AIS data live  ", type="secondary", help="Oppdater skipposisjoner fra AIS (opptil 90 sek)",
-                     use_container_width=True):
+    if st.button("🔄 Trykk her for å lytte etter ny AIS info ", help="Oppdater skipposisjoner fra AIS (opptil 90 sek)",
+                 use_container_width=True):
+        if api_key:
             st.session_state["ais_trigger"] = True
+        else:
+            st.warning("Ingen API-nøkkel funnet.")
 
 # Kjør live AIS-henting KUN når refresh-knappen er trykket
 if api_key and st.session_state.ais_trigger:
