@@ -505,8 +505,8 @@ def build_map(
 
 # ── Streamlit UI ──────────────────────────────────────────────────────────────
 
-st.set_page_config(page_title="Wind & Vessel Tracker", page_icon="🚢", layout="wide")
-st.title("🚢 Vind, Vær & Skipstracker")
+st.set_page_config(page_title="Tur vær-varsel", page_icon="🚢", layout="wide")
+st.title("🚢 Hjemmelaget værmelding for Tur sine skip")
 
 # API key is loaded inside the sidebar block below
 
