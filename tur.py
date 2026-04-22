@@ -511,18 +511,23 @@ st.title("🚢 Tur - Ikke helt som Yr, men nesten..")
 # API key is loaded inside the sidebar block below
 
 # ── Last inn API-nøkkel (kjøres alltid, ikke bare i sidebar) ──────────────────
-from pathlib import Path as _Path
-api_key = ""
-for _name in (".env", "key.env"):
-    _p = _Path.cwd() / _name
-    if _p.exists():
-        for _line in _p.read_text().splitlines():
-            _line = _line.strip()
-            if _line.startswith("AISSTREAM_API_KEY"):
-                api_key = _line.split("=", 1)[-1].strip().strip('"').strip("'")
-                break
-    if api_key:
-        break
+# Prøv Streamlit secrets først (Community Cloud), så .env (lokalt)
+try:
+    api_key = st.secrets["AISSTREAM_API_KEY"]
+except:
+    # faller tilbake til .env-lesing som før
+    from pathlib import Path as _Path
+    api_key = ""
+    for _name in (".env", "key.env"):
+        _p = _Path.cwd() / _name
+        if _p.exists():
+            for _line in _p.read_text().splitlines():
+                _line = _line.strip()
+                if _line.startswith("AISSTREAM_API_KEY"):
+                    api_key = _line.split("=", 1)[-1].strip().strip('"').strip("'")
+                    break
+        if api_key:
+            break
 
 with st.sidebar:
     # Logo
